@@ -1,6 +1,6 @@
 <?php
 
-namespace MichielKempen\NovaOrderField;
+namespace Spear\NovaOrderField;
 
 use Illuminate\Support\Facades\Route;
 use Laravel\Nova\Nova;
@@ -37,7 +37,7 @@ class OrderFieldServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', 'api'])
-            ->prefix('nova-vendor/michielkempen/nova-order-field')
+            ->prefix('nova-vendor/Spear/nova-order-field')
             ->group(__DIR__.'/../routes/api.php');
     }
 }

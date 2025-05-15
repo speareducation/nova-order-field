@@ -1,5 +1,5 @@
 {
-    "name": "michielkempen/nova-order-field",
+    "name": "speareducation/nova-order-field",
     "description": "A Laravel Nova field.",
     "keywords": [
         "laravel",
@@ -8,18 +8,18 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "laravel/nova": "^2.0|^3.0",
+        "laravel/nova": ">=2.0",
         "spatie/eloquent-sortable": "^3.4|^4.0"
     },
     "autoload": {
         "psr-4": {
-            "MichielKempen\\NovaOrderField\\": "src/"
+            "Spear\\NovaOrderField\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "MichielKempen\\NovaOrderField\\OrderFieldServiceProvider"
+                "Spear\\NovaOrderField\\OrderFieldServiceProvider"
             ]
         }
     },

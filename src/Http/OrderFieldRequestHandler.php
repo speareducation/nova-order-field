@@ -1,6 +1,6 @@
 <?php
 
-namespace MichielKempen\NovaOrderField\Http;
+namespace Spear\NovaOrderField\Http;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Database\Eloquent\Model;

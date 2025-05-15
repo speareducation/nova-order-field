@@ -60,7 +60,7 @@ export default {
     reorderResource(direction) {
       Nova.request()
         .post(
-          `/nova-vendor/michielkempen/nova-order-field/${this.resourceName}`,
+          `/nova-vendor/Spear/nova-order-field/${this.resourceName}`,
           {
             direction: direction,
             resource: this.resourceName,

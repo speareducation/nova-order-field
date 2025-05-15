@@ -1,7 +1,7 @@
 # Nova Order Field
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/michielkempen/nova-order-field.svg)](https://packagist.org/packages/michielkempen/nova-order-field)
-[![Total Downloads](https://img.shields.io/packagist/dt/michielkempen/nova-order-field.svg)](https://packagist.org/packages/michielkempen/nova-order-field)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/Spear/nova-order-field.svg)](https://packagist.org/packages/Spear/nova-order-field)
+[![Total Downloads](https://img.shields.io/packagist/dt/Spear/nova-order-field.svg)](https://packagist.org/packages/Spear/nova-order-field)
 
 ### Description
 
@@ -9,20 +9,20 @@ A field that adds reordering functionality to your Laravel Nova resource's index
 
 ### Demo
 
-![Demo](https://raw.githubusercontent.com/michielkempen/nova-order-field/master/docs/screenshot.png)
+![Demo](https://raw.githubusercontent.com/Spear/nova-order-field/master/docs/screenshot.png)
 
 ### Installation
 
 This package can be installed through Composer.
 
 ```bash
-composer require michielkempen/nova-order-field
+composer require Spear/nova-order-field
 ```
 
 ### Usage
 
 1. Follow the [usage instructions](https://github.com/spatie/eloquent-sortable#usage) on the eloquent-sortable repository to make your model sortable.
-2. Add the `MichielKempen\NovaOrderField\Orderable` trait to your Nova Resource.
+2. Add the `Spear\NovaOrderField\Orderable` trait to your Nova Resource.
 3. Add a public static property called `$defaultOrderField` to your resource, containing your order column.
 4. Add the `OrderField` to your Nova Resource `fields` method.
 
@@ -43,15 +43,15 @@ This will restrict the calculations to fields value of the model instance.
 ### Example
 
 ```php
-use MichielKempen\NovaOrderField\Orderable;
-use MichielKempen\NovaOrderField\OrderField;
+use Spear\NovaOrderField\Orderable;
+use Spear\NovaOrderField\OrderField;
 
 class Page extends Resource
 {
     use Orderable;
-    
+
     public static $defaultOrderField = 'order';
-    
+
     public function fields(Request $request)
     {
         return [
