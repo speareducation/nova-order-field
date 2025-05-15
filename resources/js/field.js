@@ -1,3 +1,5 @@
 Nova.booting((app, router) => {
-    app.component('index-order-field', require('./components/IndexField'));
+    const IndexField = require('./components/IndexField');
+    console.log('Nova Order Field booting', IndexField);
+    app.component('index-order-field', IndexField);
 })
