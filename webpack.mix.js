@@ -7,5 +7,5 @@ mix
   .setPublicPath('dist')
   .js('resources/js/field.js', 'js')
   .vue({ version: 3 })
-  .nova('spear/order-field')
+  .nova('speareducation/nova-order-field')
   .version()
