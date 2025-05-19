@@ -1,8 +1,8 @@
 <template>
   <div class="flex items-center">
-    <button
+    <div
       v-if="!field.last"
-      @click="reorderResource('down')"
+      @click.stop="reorderResource('down')"
       class="cursor-pointer text-70 hover:text-primary mr-3"
     >
       <svg
@@ -14,16 +14,16 @@
         stroke-linejoin="round"
         stroke-width="2"
         viewBox="0 0 24 24"
-        class="fill-white"
+        fill="none"
       >
         <circle cx="12" cy="12" r="10" />
         <polyline points="8 12 12 16 16 12" />
         <line x1="12" x2="12" y1="8" y2="16" />
       </svg>
-    </button>
-    <button
+    </div>
+    <div
       v-if="!field.first"
-      @click="reorderResource('up')"
+      @click.stop="reorderResource('up')"
       class="cursor-pointer text-70 hover:text-primary"
     >
       <svg
@@ -35,48 +35,35 @@
         stroke-linejoin="round"
         stroke-width="2"
         viewBox="0 0 24 24"
-        class="fill-white"
+        fill="none"
       >
         <circle cx="12" cy="12" r="10" />
         <polyline points="16 12 12 8 8 12" />
         <line x1="12" x2="12" y1="16" y2="8" />
       </svg>
-    </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["resourceName", "field"],
-  computed: {
-    resourceId() {
-      return this.$parent.resource.id.value;
-    },
-    parentList() {
-      return this.$parent.$parent.$parent.$parent.$parent.$parent;
-    }
-  },
+  props: ['resourceName', 'resource', 'field', 'viaResource', 'viaResourceId', 'viaRelationship'],
   methods: {
-    reorderResource(direction) {
-      Nova.request()
-        .post(
-          `/nova-vendor/Spear/nova-order-field/${this.resourceName}`,
-          {
-            direction: direction,
-            resource: this.resourceName,
-            resourceId: this.resourceId,
-            viaResource: this.field.viaResource || null,
-            viaResourceId: this.field.viaResourceId || null,
-            viaRelationship: this.field.viaRelationship || null
-          }
-        )
-        .then(() => {
-          this.$toasted.show(this.__("The new order has been set!"), {
-            type: "success"
-          });
+    async reorderResource(direction) {
+      await Nova.request().post(`/nova-vendor/Spear/nova-order-field/${this.resourceName}`, {
+        direction: direction,
+        resource: this.resourceName,
+        resourceId: this.resource.id.value,
+        viaResource: this.field.viaResource || null,
+        viaResourceId: this.field.viaResourceId || null,
+        viaRelationship: this.field.viaRelationship || null
+      });
 
-          this.parentList.getResources();
-        });
+      Nova.$toasted.show(this.__("The new order has been set!"), {
+        type: "success"
+      });
+
+      Nova.$emit('refresh-resources');
     }
   }
 };

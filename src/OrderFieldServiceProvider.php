@@ -17,7 +17,7 @@ class OrderFieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::mix('order-field', __DIR__.'/../dist/js/field.js');
+            Nova::mix('order-field', __DIR__.'/../dist/mix-manifest.json');
         });
 
         $this->app->booted(function () {
